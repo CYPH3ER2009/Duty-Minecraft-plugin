@@ -1,0 +1,12 @@
+ranks:
+  helper:
+    glowColor: "GREEN"
+  mod:
+    glowColor: "BLUE"
+  admin:
+    glowColor: "RED"
+
+discord:
+  webhook_url: "https://discord.com/api/webhooks/..."
+
+weekly_summary_time: "Sunday 23:00"
