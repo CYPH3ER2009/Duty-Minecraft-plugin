@@ -1,8 +1,10 @@
 package me.cyph3er.dutymanager;
 
+import me.cyph3er.dutymanager.commands.DutyListCommand;
 import me.cyph3er.dutymanager.gui.DutyGUI;
 import me.cyph3er.dutymanager.gui.DutyListGUI;
 import me.cyph3er.dutymanager.gui.DutyTimesGUI;
+import me.cyph3er.dutymanager.listeners.PlayerListener;
 import me.cyph3er.dutymanager.tasks.WeeklySummaryTask;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +27,10 @@ public class DutyManager extends JavaPlugin {
         this.dutyTimesGUI = new DutyTimesGUI(this, dataManager);
         
         new WeeklySummaryTask(this, dataManager).runTaskTimer(this, 0L, 604800L);
+        
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        
+        getCommand("dutylist").setExecutor(new DutyListCommand(this));
     }
 
     @Override
